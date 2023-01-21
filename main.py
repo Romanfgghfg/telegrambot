@@ -22,7 +22,7 @@ async def send_welkom(massege: types.Message):
     if len(ribov_list) == 0:
         return await tgbot.send_massege.reply(massege.chat.id, "мы сожалеем , но рыбов""не осталось, Джамшут их съел и теперь мы продаем его на органы""приходите по позже")
     if not args:
-        return await tgbotbot.send_message(message.chat.id, f"ейчас есть {len(ribov_list)}" f"рыбов в наличии. " f"сколько рыбов вы хотите + пивасик скидка от джамшута")
+        return await tgbot.send_message(message.chat.id, f"ейчас есть {len(ribov_list)}" f"рыбов в наличии. " f"сколько рыбов вы хотите + пивасик скидка от джамшута")
     else:
         if args.isdigit():
             args = int(args)
@@ -31,11 +31,19 @@ async def send_welkom(massege: types.Message):
             else:
                 for i in range(args):
             ribov_list.pop()
-            return awaittgbot.send_message(message.chat.id, f"осталось {len(ribov_list)} " f"рыбов в наличие")
+            return await tgbot.send_message(message.chat.id, f"осталось {len(ribov_list)} " f"рыбов в наличие")
+
 @dp.message_handler(commands = ['help'])
 async def send_welkom(massege: types.Message):
     return await tgbot.send_massege.reply(massege.chat.id,
                                         HELP_MESSAGE<"HTML")
+
+@dp.message_handler(commands = ['add'])
+async def send_welkom(massege: types.Message):
+    print(message.chat.id)
+    args = message.get_args()
+    if message.chat.id != 5988658399:
+        return await tgbot.send_massege.reply(massege.chat.id,
 
 
 if __name__ == '__main__':
